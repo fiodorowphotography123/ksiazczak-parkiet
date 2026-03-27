@@ -1,0 +1,114 @@
+---
+const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+---
+
+<section class="relative overflow-hidden bg-stone-900">
+  <!-- Background image / gradient -->
+  <div class="absolute inset-0 z-0">
+    <!-- Replace this with your real hero photo -->
+    <img
+      src="/images/hero-parkiet.jpg"
+      alt="Piękna drewniana podłoga po cyklinowaniu bezpyłowym – Ksiązak Parkiety Siedlce"
+      class="h-full w-full object-cover object-center"
+      width="1200"
+      height="700"
+      fetchpriority="high"
+      decoding="async"
+      onerror="this.style.display='none'"
+    />
+    <!-- Overlay gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/70 to-stone-900/40"></div>
+    <!-- Fallback gradient if no image -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-stone-800 via-stone-900 to-wood-900"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+    <div class="max-w-2xl">
+      <!-- Badge -->
+      <div class="mb-5 inline-flex items-center gap-2 rounded-full bg-wood-500/20 px-4 py-1.5 text-sm font-medium text-wood-300 ring-1 ring-wood-500/30">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        Ponad 25 lat doświadczenia · Siedlce i Warszawa
+      </div>
+
+      <!-- H1 -->
+      <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-white text-balance sm:text-5xl lg:text-6xl">
+        Cyklinowanie<br/>
+        <span class="text-wood-400">bezpyłowe</span><br/>
+        podłóg drewnianych
+      </h1>
+
+      <p class="mt-6 text-lg leading-relaxed text-stone-300 text-balance">
+        Profesjonalna renowacja parkietów, podłóg drewnianych i schodów.
+        Technologia bezpyłowa – <strong class="text-white">bez bałaganu, bez pyłu</strong>.
+        Obsługujemy Siedlce, Warszawę i okolice w promieniu 100 km.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+        <a
+          href={PHONE_HREF}
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-wood-500 px-7 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-wood-600 active:scale-95"
+          aria-label={`Zadzwoń: ${PHONE}`}
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Zadzwoń: {PHONE}
+        </a>
+        <a
+          href="/kontakt"
+          class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 active:scale-95"
+        >
+          Bezpłatna wycena
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="mt-10 flex flex-wrap gap-6 text-sm text-stone-400">
+        <div class="flex items-center gap-2">
+          <svg class="h-5 w-5 text-green-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+          Technologia bezpyłowa
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="h-5 w-5 text-green-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+          Profesjonalne maszyny
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="h-5 w-5 text-green-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+          Bezpłatna wycena
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="relative z-10 border-t border-white/10 bg-white/5 backdrop-blur-sm">
+    <div class="mx-auto max-w-6xl px-4 py-5 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {[
+          { value: '25+', label: 'lat doświadczenia' },
+          { value: '100%', label: 'bezpyłowa technologia' },
+          { value: '100 km', label: 'zasięg od Siedlec' },
+          { value: '5★', label: 'ocena klientów' },
+        ].map(stat => (
+          <div class="text-center">
+            <div class="text-2xl font-bold text-wood-400 sm:text-3xl">{stat.value}</div>
+            <div class="mt-0.5 text-xs text-stone-400 sm:text-sm">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

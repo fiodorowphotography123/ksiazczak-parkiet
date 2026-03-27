@@ -1,0 +1,81 @@
+---
+export interface Props {
+  items?: { q: string; a: string }[];
+}
+
+const defaultFAQ = [
+  {
+    q: 'Czym jest cyklinowanie bezpyłowe i dlaczego warto je wybrać?',
+    a: 'Cyklinowanie bezpyłowe to metoda szlifowania podłóg drewnianych przy użyciu maszyn z systemem odsysania pyłu. Ponad 99% pyłu jest wyłapywane bezpośrednio przez maszynę, dzięki czemu w domu nie ma bałaganu. To idealne rozwiązanie dla rodzin z dziećmi, alergików oraz osób, które nie chcą wynosić wszystkich mebli. Praca przebiega szybko i bezpiecznie.',
+  },
+  {
+    q: 'Ile kosztuje cyklinowanie parkietu w Siedlcach i okolicach?',
+    a: 'Cena cyklinowania zależy od stanu podłogi, rodzaju drewna i wybranego wykończenia. Orientacyjne ceny to: szlifowanie 25–45 zł/m², lakierowanie 15–25 zł/m², olejowanie 20–35 zł/m². Zapraszamy do kontaktu po bezpłatną wycenę – dojedziemy na miejsce i dokładnie ocenimy Twoją podłogę.',
+  },
+  {
+    q: 'Jak długo trwa cyklinowanie podłogi?',
+    a: 'Czas pracy zależy od powierzchni i stopnia zniszczenia podłogi. Typowy salon (20–30 m²) szlifujemy w ciągu jednego dnia. Wielofazowe lakierowanie (2–3 warstwy) wydłuża czas pracy do 2–3 dni, z uwagi na suszenie każdej warstwy. Po lakierowaniu podłoga jest gotowa do użytkowania po 24–48 godzinach.',
+  },
+  {
+    q: 'Czy obsługujecie Warszawę i okolicę?',
+    a: 'Tak, obsługujemy Warszawę oraz cały region mazowiecki. Głównie pracujemy w promieniu 100 km od Siedlec, co obejmuje m.in. Mińsk Mazowiecki, Łuków, Sokołów Podlaski i Białą Podlaską. Koszt dojazdu omawiamy indywidualnie – często jest bezpłatny przy większych zleceniach.',
+  },
+  {
+    q: 'Jakie podłogi można cyklinować?',
+    a: 'Cyklinowaniu poddają się wszystkie podłogi z litego drewna: parkiety (dębowe, sosnowe, jesionowe i inne), deski drewniane, mozaika parkietowa oraz podłogi warstwowe z odpowiednią warstwą użytkową (min. 4 mm). Nie nadają się do cyklinowania panele laminowane ani deski WPC.',
+  },
+  {
+    q: 'Czy wykonujecie też renowację schodów drewnianych?',
+    a: 'Tak! Andrzej Książczak specjalizuje się w schodach drewnianych – wykonujemy renowację starych schodów, naprawę stopni, a także montaż nowych schodów drewnianych. Zapraszamy do kontaktu w sprawie schodów.',
+  },
+  {
+    q: 'Lakierowanie czy olejowanie – co wybrać?',
+    a: 'Lakierowanie tworzy twardą powłokę ochronną, idealną do kuchni i korytarzy. Jest odporny na wilgoć i łatwy w czyszczeniu. Olejowanie wnika w drewno i podkreśla jego naturalne usłojenie – podłoga oddycha, jest bardziej przyjazna dla środowiska. Uszkodzenia olejowanej podłogi można naprawić punktowo, bez konieczności szlifowania całości.',
+  },
+  {
+    q: 'Jak się przygotować do cyklinowania?',
+    a: 'Prosimy o opróżnienie pomieszczenia z mebli (możemy pomóc w przeniesieniu lżejszych elementów), zdjęcie firan i zasłon (pył mimo wszystko może powstawać) oraz zabezpieczenie sprzętu w sąsiednich pokojach. Resztą zajmujemy się sami!',
+  },
+];
+
+const { items = defaultFAQ } = Astro.props;
+---
+
+<section class="section-padding bg-stone-50" id="faq" aria-labelledby="faq-heading">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="section-title" id="faq-heading">Najczęstsze pytania</h2>
+      <p class="section-subtitle mx-auto max-w-xl">
+        Odpowiedzi na pytania, które najczęściej zadają nasi klienci.
+      </p>
+    </div>
+
+    <div class="mt-10 mx-auto max-w-3xl space-y-3" itemscope itemtype="https://schema.org/FAQPage">
+      {items.map((item) => (
+        <details
+          class="group rounded-xl bg-white shadow-sm ring-1 ring-stone-100 transition-shadow hover:shadow-md"
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
+        >
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5" itemprop="name">
+            <span class="text-base font-semibold text-stone-900 text-left">{item.q}</span>
+            <span class="faq-icon flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-stone-100 text-stone-500 transition-all group-open:bg-wood-100 group-open:text-wood-600" aria-hidden="true">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12M6 12h12"/>
+              </svg>
+            </span>
+          </summary>
+          <div
+            class="px-6 pb-5 text-sm leading-relaxed text-stone-600"
+            itemscope
+            itemprop="acceptedAnswer"
+            itemtype="https://schema.org/Answer"
+          >
+            <p itemprop="text">{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

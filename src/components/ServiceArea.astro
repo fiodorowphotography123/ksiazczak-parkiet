@@ -1,0 +1,87 @@
+---
+const cities = [
+  { name: 'Siedlce', primary: true, desc: 'Siedziba firmy' },
+  { name: 'Warszawa', primary: true, desc: '~100 km' },
+  { name: 'Mińsk Mazowiecki', primary: false, desc: '~60 km' },
+  { name: 'Łuków', primary: false, desc: '~40 km' },
+  { name: 'Sokołów Podlaski', primary: false, desc: '~40 km' },
+  { name: 'Biała Podlaska', primary: false, desc: '~80 km' },
+  { name: 'Garwolin', primary: false, desc: '~70 km' },
+  { name: 'Ostrów Mazowiecka', primary: false, desc: '~80 km' },
+  { name: 'Węgrów', primary: false, desc: '~30 km' },
+  { name: 'Mordy', primary: false, desc: '~25 km' },
+];
+---
+
+<section class="section-padding bg-white" id="obszar" aria-labelledby="area-heading">
+  <div class="container-max">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+      <!-- Text -->
+      <div>
+        <h2 class="section-title" id="area-heading">Obszar działania</h2>
+        <p class="section-subtitle max-w-lg">
+          Obsługujemy <strong>Siedlce i okolice w promieniu 100 km</strong>. Regularnie pracujemy też na terenie <strong>Warszawy i całego Mazowsza</strong>.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-2">
+          {cities.map((city) => (
+            <span class={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium ${
+              city.primary
+                ? 'bg-wood-500 text-white'
+                : 'bg-stone-100 text-stone-700'
+            }`}>
+              {city.name}
+              {city.primary && (
+                <span class="ml-1.5 text-xs opacity-75">★</span>
+              )}
+            </span>
+          ))}
+          <span class="inline-flex items-center rounded-full bg-stone-50 px-3 py-1.5 text-sm text-stone-500 ring-1 ring-dashed ring-stone-300">
+            + okolice...
+          </span>
+        </div>
+
+        <div class="mt-8 rounded-xl bg-stone-50 p-5 text-sm text-stone-600 leading-relaxed ring-1 ring-stone-100">
+          <p>
+            <strong class="text-stone-900">Dojazd:</strong> W przypadku zleceń na terenie Siedlec i okolic (do 40 km) dojazd jest <strong>bezpłatny</strong>.
+            Dla dalszych lokalizacji (Warszawa, Biała Podlaska) koszt dojazdu ustalamy indywidualnie.
+          </p>
+        </div>
+      </div>
+
+      <!-- Map placeholder / embed -->
+      <div class="overflow-hidden rounded-2xl shadow-md ring-1 ring-stone-100">
+        <!--
+          Replace with real Google Maps embed:
+          1. Go to google.com/maps
+          2. Search your address in Siedlce
+          3. Click "Share" → "Embed a map" → Copy iframe
+          4. Replace the div below with the iframe
+        -->
+        <div class="relative flex h-80 items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 lg:h-96" aria-label="Mapa obszaru obsługi – Siedlce i okolice">
+          <!-- Placeholder if no map configured -->
+          <div class="text-center text-stone-400">
+            <svg class="mx-auto h-12 w-12 opacity-40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <p class="mt-2 text-sm font-medium">Siedlce, woj. mazowieckie</p>
+            <p class="text-xs">Zasięg 100 km</p>
+          </div>
+          <!--
+          EXAMPLE MAP EMBED (uncomment and replace src):
+          <iframe
+            src="https://www.google.com/maps/embed?..."
+            width="100%"
+            height="100%"
+            style="border:0; position:absolute; inset:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa – Książczak Parkiety Siedlce"
+          ></iframe>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

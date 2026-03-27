@@ -1,0 +1,101 @@
+---
+const services = [
+  {
+    icon: `<path d="M7 16v-4.586l-1.293 1.293-1.414-1.414L9 6.586l4.707 4.707-1.414 1.414L11 11.414V16h-4zm10-8v4.586l1.293-1.293 1.414 1.414L15 17.414l-4.707-4.707 1.414-1.414L13 12.586V8h4z"/>`,
+    title: 'Cyklinowanie bezpyłowe',
+    description: 'Szlifowanie podłóg drewnianych nowoczesną technologią bezpyłową. Brak bałaganu, idealny efekt. Parkiety, deski, mozaika.',
+    href: '/cyklinowanie-bezpylowe',
+    cta: 'Dowiedz się więcej',
+    featured: true,
+  },
+  {
+    icon: `<path d="M7 21H3a1 1 0 01-1-1v-4a1 1 0 011-1h4v6zm7-2H10v-4h4v4zm7 2h-5v-6h4a1 1 0 011 1v4a1 1 0 01-1 1zM12 3l-8 6h4v8h8v-8h4L12 3z"/>`,
+    title: 'Lakierowanie podłóg',
+    description: 'Lakierowanie podłóg drewnianych wodoodpornymi lakierami najwyższej jakości. Efekt trwały i estetyczny na lata.',
+    href: '/uslugi#lakierowanie',
+    cta: 'Szczegóły',
+    featured: false,
+  },
+  {
+    icon: `<path d="M19.78 2.2L22 4.42 11.68 14.74c.42.58.68 1.29.68 2.06 0 1.93-1.57 3.5-3.5 3.5S5.36 18.73 5.36 16.8c0-1.93 1.57-3.5 3.5-3.5.77 0 1.48.26 2.06.68L19.78 2.2zm-11.42 13.1c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25z"/>`,
+    title: 'Olejowanie podłóg',
+    description: 'Olejowanie jako naturalna alternatywa dla lakieru. Podkreśla naturalne usłojenie drewna, łatwe w naprawie.',
+    href: '/uslugi#olejowanie',
+    cta: 'Szczegóły',
+    featured: false,
+  },
+  {
+    icon: `<path d="M4 5h16v2H4V5zm0 4h16v2H4V9zm0 4h10v2H4v-2zm0 4h6v2H4v-2z"/>`,
+    title: 'Układanie parkietu',
+    description: 'Profesjonalne układanie parkietów, desek drewnianych i mozaiki. Wszelkie wzory i gatunki drewna.',
+    href: '/uslugi#ukladanie',
+    cta: 'Szczegóły',
+    featured: false,
+  },
+  {
+    icon: `<path d="M4 20V8l8-5 8 5v12H4zm8-11L7 12v6h10v-6l-5-3zm2 7h-4v-4h4v4z"/>`,
+    title: 'Schody drewniane',
+    description: 'Produkcja, montaż i renowacja schodów drewnianych. Andrzej Książczak – specjalista od 25 lat.',
+    href: '/schody-drewniane',
+    cta: 'Dowiedz się więcej',
+    featured: false,
+  },
+];
+---
+
+<section class="section-padding bg-stone-50" id="uslugi" aria-labelledby="uslugi-heading">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="section-title" id="uslugi-heading">Nasze usługi</h2>
+      <p class="section-subtitle mx-auto max-w-2xl">
+        Kompleksowa obsługa podłóg drewnianych i schodów. Pracujemy na terenie Siedlec, Warszawy i okolic.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <article class={`group relative flex flex-col rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-xl ${
+          service.featured
+            ? 'bg-wood-500 text-white shadow-lg shadow-wood-500/20 ring-2 ring-wood-500'
+            : 'bg-white shadow-sm ring-1 ring-stone-100'
+        }`}>
+          {service.featured && (
+            <div class="mb-3 inline-flex w-fit items-center rounded-full bg-white/20 px-3 py-0.5 text-xs font-semibold text-white">
+              Główna usługa
+            </div>
+          )}
+          <div class={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${
+            service.featured ? 'bg-white/20' : 'bg-wood-50'
+          }`}>
+            <svg class={`h-6 w-6 ${service.featured ? 'text-white' : 'text-wood-500'}`} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <Fragment set:html={service.icon} />
+            </svg>
+          </div>
+
+          <h3 class={`text-lg font-bold ${service.featured ? 'text-white' : 'text-stone-900'}`}>
+            {service.title}
+          </h3>
+
+          <p class={`mt-2 flex-1 text-sm leading-relaxed ${service.featured ? 'text-white/80' : 'text-stone-600'}`}>
+            {service.description}
+          </p>
+
+          <a
+            href={service.href}
+            class={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-all ${
+              service.featured
+                ? 'text-white hover:gap-3'
+                : 'text-wood-600 hover:text-wood-700 hover:gap-3'
+            }`}
+            aria-label={`${service.cta} – ${service.title}`}
+          >
+            {service.cta}
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

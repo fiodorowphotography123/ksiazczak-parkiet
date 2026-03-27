@@ -1,0 +1,67 @@
+---
+const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Umów bezpłatną wycenę',
+  subtitle = 'Zadzwoń lub napisz – odpiszemy w ciągu kilku godzin. Dojedziemy na miejsce i bezpłatnie ocenimy stan Twoich podłóg.',
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-wood-500" aria-labelledby="cta-heading">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="wood-grain" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M0 30 Q15 20 30 30 Q45 40 60 30" stroke="white" stroke-width="1" fill="none"/>
+          <path d="M0 20 Q15 10 30 20 Q45 30 60 20" stroke="white" stroke-width="0.5" fill="none"/>
+          <path d="M0 40 Q15 30 30 40 Q45 50 60 40" stroke="white" stroke-width="0.5" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#wood-grain)"/>
+    </svg>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl" id="cta-heading">
+        {title}
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-wood-100">
+        {subtitle}
+      </p>
+
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href={PHONE_HREF}
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-wood-600 shadow-lg transition-all hover:bg-wood-50 active:scale-95"
+          aria-label={`Zadzwoń: ${PHONE}`}
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+          Zadzwoń: {PHONE}
+        </a>
+        <a
+          href="/kontakt"
+          class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-8 py-4 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 active:scale-95"
+        >
+          Napisz do nas
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-wood-200">
+        Bezpłatna wycena · Dojazd w promieniu 40 km gratis · Odpowiedź w ciągu kilku godzin
+      </p>
+    </div>
+  </div>
+</section>

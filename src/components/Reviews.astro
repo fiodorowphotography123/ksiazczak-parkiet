@@ -1,0 +1,94 @@
+---
+// Replace with real customer reviews
+const reviews = [
+  {
+    name: 'Marek W.',
+    location: 'Siedlce',
+    rating: 5,
+    date: '2025-01',
+    text: 'Fantastyczna robota! Pan Krzysztof odświeżył nasz 30-letni parkiet w salonie. Efekt przeszedł nasze oczekiwania – podłoga wygląda jak nowa. Technologia bezpyłowa zadziałała świetnie, nie było żadnego bałaganu. Polecam z całego serca!',
+  },
+  {
+    name: 'Anna K.',
+    location: 'Warszawa',
+    rating: 5,
+    date: '2024-11',
+    text: 'Bardzo profesjonalna obsługa. Terminy dotrzymane, praca staranna i solidna. Podłogi w całym mieszkaniu wyglądają rewelacyjnie. Zdecydowanie najlepszy wybór w okolicy. Przyjadą też do Warszawy bez problemu!',
+  },
+  {
+    name: 'Tomasz P.',
+    location: 'Mińsk Mazowiecki',
+    rating: 5,
+    date: '2025-02',
+    text: 'Polecam firmę Książczak z najlepszej strony. Szybko, sprawnie, bez pyłu. Olejowanie wykonane mistrzowsko, drewno pięknie oddycha. Widać wieloletnie doświadczenie w każdym ruchu. Wrócę przy następnej renowacji.',
+  },
+];
+---
+
+<section class="section-padding bg-white" id="opinie" aria-labelledby="reviews-heading">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="section-title" id="reviews-heading">Co mówią nasi klienci?</h2>
+      <p class="section-subtitle mx-auto max-w-xl">
+        Ponad 25 lat pracy i setki zadowolonych klientów w Siedlcach, Warszawie i całym regionie.
+      </p>
+      <!-- Star rating summary -->
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <div class="flex" aria-label="Ocena 5 na 5 gwiazdek">
+          {Array.from({ length: 5 }).map(() => (
+            <svg class="h-6 w-6 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          ))}
+        </div>
+        <span class="text-sm font-semibold text-stone-700">5.0 / 5 – ocena Google</span>
+      </div>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {reviews.map((review) => (
+        <article class="flex flex-col rounded-2xl bg-stone-50 p-6 ring-1 ring-stone-100" itemscope itemtype="https://schema.org/Review">
+          <!-- Stars -->
+          <div class="flex gap-0.5" aria-label={`Ocena ${review.rating} gwiazdek`}>
+            {Array.from({ length: review.rating }).map(() => (
+              <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Review text -->
+          <blockquote class="mt-4 flex-1 text-sm leading-relaxed text-stone-700" itemprop="reviewBody">
+            "{review.text}"
+          </blockquote>
+
+          <!-- Reviewer -->
+          <div class="mt-5 flex items-center gap-3 border-t border-stone-200 pt-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-wood-500 text-sm font-bold text-white">
+              {review.name.charAt(0)}
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-stone-900" itemprop="author">{review.name}</p>
+              <p class="text-xs text-stone-500">{review.location}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href="https://g.co/kgs/r7Xu2b"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-sm font-medium text-wood-600 hover:text-wood-700 transition-colors"
+        aria-label="Zobacz wszystkie opinie Google"
+      >
+        Zobacz wszystkie opinie na Google
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { localBusinessSchema } from '../components/SchemaOrg.astro';
+
+const PHONE = '+48 XXX XXX XXX';
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+const EMAIL = 'kontakt@ksiazczak-parkiet.pl';
+---
+
+<Layout
+  title="Kontakt – Cyklinowanie Siedlce i Warszawa | Książczak Parkiety"
+  description="Skontaktuj się z nami! Cyklinowanie bezpyłowe Siedlce, Warszawa i okolice. ☎ Telefon, formularz kontaktowy, bezpłatna wycena. Odpowiadamy szybko!"
+  schema={localBusinessSchema}
+  breadcrumbs={[{ name: 'Kontakt', url: '/kontakt' }]}
+>
+  <!-- Header -->
+  <section class="bg-stone-50 py-14 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-4 text-sm text-stone-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-1.5">
+          <li><a href="/" class="hover:text-stone-600 transition-colors">Strona główna</a></li>
+          <li>/</li>
+          <li class="text-stone-600" aria-current="page">Kontakt</li>
+        </ol>
+      </nav>
+      <h1 class="text-4xl font-extrabold text-stone-900 sm:text-5xl">Skontaktuj się z nami</h1>
+      <p class="mt-4 max-w-2xl text-lg text-stone-600 leading-relaxed">
+        Zadzwoń lub wyślij wiadomość. Bezpłatnie dojedziemy na oględziny i przygotujemy wycenę.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+        <!-- Contact form -->
+        <div>
+          <h2 class="text-2xl font-bold text-stone-900">Formularz kontaktowy</h2>
+          <p class="mt-2 text-sm text-stone-500">Odpiszemy w ciągu kilku godzin w dni robocze.</p>
+
+          <form
+            id="contact-form"
+            class="mt-6 space-y-5"
+            action="/api/contact"
+            method="POST"
+            novalidate
+          >
+            <div>
+              <label for="name" class="block text-sm font-medium text-stone-700">Imię i nazwisko *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                class="mt-1 block w-full rounded-xl border border-stone-200 px-4 py-3 text-sm text-stone-900 shadow-sm transition-colors placeholder:text-stone-400 focus:border-wood-400 focus:outline-none focus:ring-2 focus:ring-wood-400/20"
+                placeholder="Jan Kowalski"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-medium text-stone-700">Telefon *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                autocomplete="tel"
+                class="mt-1 block w-full rounded-xl border border-stone-200 px-4 py-3 text-sm text-stone-900 shadow-sm transition-colors placeholder:text-stone-400 focus:border-wood-400 focus:outline-none focus:ring-2 focus:ring-wood-400/20"
+                placeholder="+48 XXX XXX XXX"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-stone-700">Email <span class="text-stone-400">(opcjonalnie)</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                class="mt-1 block w-full rounded-xl border border-stone-200 px-4 py-3 text-sm text-stone-900 shadow-sm transition-colors placeholder:text-stone-400 focus:border-wood-400 focus:outline-none focus:ring-2 focus:ring-wood-400/20"
+                placeholder="jan@example.com"
+              />
+            </div>
+
+            <div>
+              <label for="service" class="block text-sm font-medium text-stone-700">Czego potrzebujesz?</label>
+              <select
+                id="service"
+                name="service"
+                class="mt-1 block w-full rounded-xl border border-stone-200 px-4 py-3 text-sm text-stone-900 shadow-sm transition-colors focus:border-wood-400 focus:outline-none focus:ring-2 focus:ring-wood-400/20"
+              >
+                <option value="">Wybierz usługę...</option>
+                <option value="cyklinowanie">Cyklinowanie bezpyłowe</option>
+                <option value="lakierowanie">Lakierowanie podłóg</option>
+                <option value="olejowanie">Olejowanie podłóg</option>
+                <option value="ukladanie">Układanie parkietu</option>
+                <option value="schody">Schody drewniane</option>
+                <option value="inne">Inne / Nie wiem</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-stone-700">Wiadomość *</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="4"
+                class="mt-1 block w-full rounded-xl border border-stone-200 px-4 py-3 text-sm text-stone-900 shadow-sm transition-colors placeholder:text-stone-400 focus:border-wood-400 focus:outline-none focus:ring-2 focus:ring-wood-400/20 resize-y"
+                placeholder="Opisz krótko czego potrzebujesz – np. rodzaj podłogi, powierzchnia, lokalizacja..."
+              ></textarea>
+            </div>
+
+            <!-- Honeypot (anti-spam) -->
+            <input type="text" name="_honeypot" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <button
+              type="submit"
+              class="w-full rounded-full bg-wood-500 px-6 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-wood-600 active:scale-95 focus-visible:ring-2 focus-visible:ring-wood-500 focus-visible:ring-offset-2"
+            >
+              Wyślij wiadomość
+            </button>
+
+            <p class="text-xs text-stone-400 text-center">
+              Wysyłając formularz akceptujesz przetwarzanie danych kontaktowych w celu odpowiedzi na Twoją wiadomość.
+            </p>
+          </form>
+
+          <!-- Success/Error messages -->
+          <div id="form-success" class="hidden mt-5 rounded-xl bg-green-50 p-5 ring-1 ring-green-200">
+            <div class="flex items-start gap-3">
+              <svg class="h-5 w-5 text-green-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <div>
+                <p class="font-semibold text-green-900">Wiadomość wysłana!</p>
+                <p class="text-sm text-green-700 mt-1">Odpiszemy do Ciebie w ciągu kilku godzin. Możesz też zadzwonić: <a href={PHONE_HREF} class="font-semibold underline">{PHONE}</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="form-error" class="hidden mt-5 rounded-xl bg-red-50 p-5 ring-1 ring-red-200">
+            <p class="font-semibold text-red-900">Ups! Coś poszło nie tak.</p>
+            <p class="text-sm text-red-700 mt-1">Spróbuj ponownie lub zadzwoń bezpośrednio: <a href={PHONE_HREF} class="font-semibold underline">{PHONE}</a></p>
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold text-stone-900">Dane kontaktowe</h2>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-wood-50">
+              <svg class="h-6 w-6 text-wood-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Telefon</p>
+              <a href={PHONE_HREF} class="mt-1 text-xl font-bold text-stone-900 hover:text-wood-600 transition-colors">{PHONE}</a>
+              <p class="mt-1 text-sm text-stone-500">Pon–Pt: 7:00–18:00 · Sob: 8:00–14:00</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-wood-50">
+              <svg class="h-6 w-6 text-wood-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Email</p>
+              <a href={`mailto:${EMAIL}`} class="mt-1 text-lg font-bold text-stone-900 hover:text-wood-600 transition-colors break-all">{EMAIL}</a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-wood-50">
+              <svg class="h-6 w-6 text-wood-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Lokalizacja</p>
+              <p class="mt-1 text-lg font-bold text-stone-900">Siedlce, woj. mazowieckie</p>
+              <p class="mt-1 text-sm text-stone-500">Obsługujemy obszar do 100 km od Siedlec i Warszawa</p>
+            </div>
+          </div>
+
+          <!-- Facebook -->
+          <div class="flex items-start gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50">
+              <svg class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Facebook</p>
+              <a
+                href="https://www.facebook.com/profile.php?id=100087186586035"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-1 text-base font-bold text-stone-900 hover:text-blue-600 transition-colors"
+              >
+                Książczak Parkiety i Schody
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick call button -->
+          <div class="pt-4">
+            <a
+              href={PHONE_HREF}
+              class="flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-6 py-5 text-lg font-bold text-white shadow-md transition-all hover:bg-green-700 active:scale-95"
+              aria-label={`Zadzwoń teraz: ${PHONE}`}
+            >
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              Zadzwoń: {PHONE}
+            </a>
+            <p class="text-center mt-2 text-xs text-stone-400">Najszybsza odpowiedź – odpowiadamy od ręki</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.textContent = 'Wysyłanie...';
+    btn.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: data,
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg?.classList.remove('hidden');
+        errorMsg?.classList.add('hidden');
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorMsg?.classList.remove('hidden');
+      successMsg?.classList.add('hidden');
+      btn.textContent = 'Wyślij wiadomość';
+      btn.disabled = false;
+    }
+  });
+</script>

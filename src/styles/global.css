@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-wood: #C8933A;
+    --color-wood-dark: #8B5E1A;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-white text-stone-900 antialiased;
+  }
+
+  /* Mobile tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Focus visible */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-wood-500;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-wood-500 px-6 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-wood-600 active:scale-95 focus-visible:ring-2 focus-visible:ring-wood-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-wood-500 px-6 py-3 text-base font-semibold text-wood-600 transition-all hover:bg-wood-50 active:scale-95;
+  }
+
+  .btn-call {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-green-700 active:scale-95;
+  }
+
+  .section-padding {
+    @apply px-4 py-16 sm:px-6 md:py-24 lg:px-8;
+  }
+
+  .container-max {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply mt-4 text-lg leading-relaxed text-stone-600;
+  }
+
+  /* FAQ accordion */
+  details summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] summary .faq-icon {
+    transform: rotate(45deg);
+  }
+  .faq-icon {
+    transition: transform 0.2s ease;
+  }
+
+  /* Mobile nav checkbox hack */
+  #nav-toggle {
+    display: none;
+  }
+  #nav-toggle:checked ~ .mobile-menu {
+    display: flex;
+  }
+  #nav-toggle:checked ~ label .hamburger-top {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #nav-toggle:checked ~ label .hamburger-mid {
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ label .hamburger-bot {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .hamburger-top,
+  .hamburger-mid,
+  .hamburger-bot {
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    transform-origin: center;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

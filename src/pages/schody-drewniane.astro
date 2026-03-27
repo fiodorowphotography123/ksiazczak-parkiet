@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { localBusinessSchema } from '../components/SchemaOrg.astro';
+
+const PHONE = '+48 XXX XXX XXX';
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+
+const stairsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Schody drewniane – montaż, produkcja, renowacja',
+  description:
+    'Produkcja, montaż i renowacja schodów drewnianych. Siedlce i okolice. Andrzej Książczak – ponad 25 lat doświadczenia.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Książczak Parkiety i Schody',
+    '@id': 'https://ksiazczak-parkiet.pl/#business',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Siedlce' },
+    { '@type': 'City', name: 'Warszawa' },
+    { '@type': 'State', name: 'Mazowieckie' },
+  ],
+};
+---
+
+<Layout
+  title="Schody Drewniane Siedlce – Montaż, Renowacja | Andrzej Książczak"
+  description="Schody drewniane – montaż, produkcja i renowacja. Siedlce, Warszawa i okolice. Andrzej Książczak – 25 lat doświadczenia. ☎ Bezpłatna wycena!"
+  schema={[localBusinessSchema, stairsSchema]}
+  breadcrumbs={[{ name: 'Schody drewniane', url: '/schody-drewniane' }]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-stone-800 to-stone-900 py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav class="mb-6 text-sm text-stone-400" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-1.5">
+            <li><a href="/" class="hover:text-stone-200 transition-colors">Strona główna</a></li>
+            <li>/</li>
+            <li class="text-stone-300" aria-current="page">Schody drewniane</li>
+          </ol>
+        </nav>
+        <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+          Schody <span class="text-wood-400">drewniane</span><br/>
+          Siedlce i okolice
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-stone-300">
+          Produkcja, montaż i renowacja schodów drewnianych. <strong class="text-white">Andrzej Książczak</strong> – specjalista z ponad 25-letnim doświadczeniem. Siedlce, Warszawa i cały region mazowiecki.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={PHONE_HREF} class="btn-primary text-base py-4 px-7">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Zadzwoń: {PHONE}
+          </a>
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
+            Bezpłatna wycena
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O Andrzeju -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h2 class="section-title">Andrzej Książczak – mistrz schodów drewnianych</h2>
+          <div class="mt-6 space-y-4 text-stone-600 leading-relaxed">
+            <p>
+              Andrzej Książczak specjalizuje się w <strong class="text-stone-900">projektowaniu i wykonywaniu schodów drewnianych</strong> od ponad 25 lat. Razem z bratem Krzysztofem tworzymy rodzinną firmę, która kompleksowo obsługuje wszystkie potrzeby związane z drewnem w domu.
+            </p>
+            <p>
+              Pracujemy z najwyższej jakości drewnem – dębem, jesionem, sosną i innymi gatunkami. Każde schody są projektowane i wykonywane <strong class="text-stone-900">na wymiar</strong> – pasują perfekcyjnie do każdego wnętrza.
+            </p>
+            <p>
+              Obsługujemy Siedlce, Warszawę oraz cały region mazowiecki. Bezpłatna wycena i pomiary – przyjedziemy do Ciebie.
+            </p>
+          </div>
+          <div class="mt-6 flex gap-4">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-wood-500">25+</div>
+              <div class="text-xs text-stone-500">lat doświadczenia</div>
+            </div>
+            <div class="w-px bg-stone-200"></div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-wood-500">na wymiar</div>
+              <div class="text-xs text-stone-500">każde schody</div>
+            </div>
+            <div class="w-px bg-stone-200"></div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-wood-500">100 km</div>
+              <div class="text-xs text-stone-500">zasięg od Siedlec</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative h-72 lg:h-96 overflow-hidden rounded-2xl bg-stone-100">
+          <img
+            src="/images/schody/schody-glowne.jpg"
+            alt="Schody drewniane wykonane przez Andrzeja Książczaka – Siedlce"
+            class="w-full h-full object-cover"
+            width="600" height="400"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
+          <div class="absolute inset-0 flex items-center justify-center text-stone-400 text-sm -z-10">Zdjęcie schodów</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usługi schodowe -->
+  <section class="section-padding bg-stone-50">
+    <div class="container-max">
+      <h2 class="section-title text-center">Co oferujemy?</h2>
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          {
+            icon: '🏗️',
+            title: 'Produkcja schodów',
+            desc: 'Schody drewniane wykonane na wymiar – od projektu po gotowy produkt. Dąb, jesion, sosna, buk i inne gatunki.',
+          },
+          {
+            icon: '🔧',
+            title: 'Montaż schodów',
+            desc: 'Profesjonalny montaż nowych schodów drewnianych w każdym budownictwie – domy nowe i remonty.',
+          },
+          {
+            icon: '✨',
+            title: 'Renowacja schodów',
+            desc: 'Renowacja starych, zniszczonych schodów – szlifowanie, naprawa stopni, lakierowanie lub olejowanie.',
+          },
+          {
+            icon: '🪵',
+            title: 'Balustrady',
+            desc: 'Drewniane balustrady i poręcze dopasowane do charakteru schodów i wnętrza.',
+          },
+          {
+            icon: '🎨',
+            title: 'Wykończenie',
+            desc: 'Lakierowanie lub olejowanie schodów – trwałe, odporne na ścieranie powłoki.',
+          },
+          {
+            icon: '📐',
+            title: 'Bezpłatne pomiary',
+            desc: 'Dojedziemy na miejsce, zmierzymy i wycenimy bez żadnych zobowiązań.',
+          },
+        ].map(item => (
+          <article class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-stone-100">
+            <div class="text-3xl mb-3" aria-hidden="true">{item.icon}</div>
+            <h3 class="text-base font-bold text-stone-900">{item.title}</h3>
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <h2 class="section-title text-center">Realizacje – schody drewniane</h2>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        {Array.from({ length: 6 }, (_, i) => (
+          <div class="overflow-hidden rounded-xl bg-stone-100 aspect-square">
+            <img
+              src={`/images/schody/schody-${i + 1}.jpg`}
+              alt={`Schody drewniane – realizacja ${i + 1} – Siedlce i okolice`}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              width="400" height="400"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-stone-500">
+        Więcej realizacji dostępnych na życzenie. <a href="/kontakt" class="text-wood-600 font-medium hover:underline">Skontaktuj się z nami →</a>
+      </p>
+    </div>
+  </section>
+
+  <ContactCTA
+    title="Zamów schody drewniane"
+    subtitle="Skontaktuj się z Andrzejem Książczakiem – bezpłatna wycena i pomiary w Siedlcach, Warszawie i okolicach."
+  />
+</Layout>

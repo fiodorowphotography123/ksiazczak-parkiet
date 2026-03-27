@@ -1,0 +1,112 @@
+---
+const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
+const PHONE_HREF = 'tel:+48XXXXXXXXX'; // ← zmień na prawdziwy numer
+
+const navLinks = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/cyklinowanie-bezpylowe', label: 'Cyklinowanie' },
+  { href: '/uslugi', label: 'Usługi' },
+  { href: '/schody-drewniane', label: 'Schody' },
+  { href: '/realizacje', label: 'Realizacje' },
+  { href: '/cennik', label: 'Cennik' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-stone-100 bg-white/95 backdrop-blur-sm">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-stone-900 hover:text-wood-600 transition-colors" aria-label="Książczak Parkiety i Schody – strona główna">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#C8933A"/>
+          <path d="M6 22 L16 8 L26 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="8" y="22" width="16" height="4" rx="1" fill="white"/>
+        </svg>
+        <span class="font-bold text-base leading-tight">
+          Książczak<br/>
+          <span class="text-wood-500 font-semibold text-sm">Parkiety i Schody</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-6" aria-label="Nawigacja główna">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors hover:text-wood-500 ${
+              currentPath === link.href
+                ? 'text-wood-500 border-b-2 border-wood-500 pb-0.5'
+                : 'text-stone-600'
+            }`}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop phone CTA -->
+      <a
+        href={PHONE_HREF}
+        class="hidden lg:inline-flex items-center gap-2 rounded-full bg-wood-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-wood-600 active:scale-95"
+        aria-label={`Zadzwoń do nas: ${PHONE}`}
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        {PHONE}
+      </a>
+
+      <!-- Mobile: hamburger (CSS-only, checkbox hack) -->
+      <div class="lg:hidden flex items-center gap-3">
+        <a
+          href={PHONE_HREF}
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-wood-500 text-white shadow-sm active:scale-95 transition-all"
+          aria-label="Zadzwoń"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+          </svg>
+        </a>
+
+        <input type="checkbox" id="nav-toggle" class="sr-only" aria-label="Otwórz menu" />
+        <label for="nav-toggle" class="flex flex-col gap-[5px] cursor-pointer p-2" aria-label="Menu">
+          <span class="hamburger-top block h-0.5 w-6 bg-stone-800 rounded-full"></span>
+          <span class="hamburger-mid block h-0.5 w-6 bg-stone-800 rounded-full"></span>
+          <span class="hamburger-bot block h-0.5 w-6 bg-stone-800 rounded-full"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu (hidden by default, shown via CSS when checkbox checked) -->
+  <nav
+    class="mobile-menu hidden lg:hidden flex-col border-t border-stone-100 bg-white px-4 pb-4 pt-2"
+    aria-label="Nawigacja mobilna"
+  >
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`block py-3 text-base font-medium border-b border-stone-50 transition-colors hover:text-wood-500 ${
+          currentPath === link.href ? 'text-wood-500' : 'text-stone-700'
+        }`}
+        aria-current={currentPath === link.href ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href={PHONE_HREF}
+      class="mt-4 flex items-center justify-center gap-2 rounded-full bg-wood-500 py-3 text-base font-semibold text-white"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+      Zadzwoń: {PHONE}
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ksiazczak-parkiet.pl/sitemap-index.xml

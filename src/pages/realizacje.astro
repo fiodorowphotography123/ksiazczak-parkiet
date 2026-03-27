@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { localBusinessSchema } from '../components/SchemaOrg.astro';
+---
+
+<Layout
+  title="Realizacje – Cyklinowanie Parkietu Przed i Po | Książczak Siedlce"
+  description="Galeria realizacji cyklinowania bezpyłowego podłóg drewnianych. Efekty przed i po – Siedlce, Warszawa, Mińsk Mazowiecki. Zobacz nasze prace!"
+  schema={localBusinessSchema}
+  breadcrumbs={[{ name: 'Realizacje', url: '/realizacje' }]}
+>
+  <!-- Header -->
+  <section class="bg-stone-50 py-14 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-4 text-sm text-stone-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-1.5">
+          <li><a href="/" class="hover:text-stone-600 transition-colors">Strona główna</a></li>
+          <li>/</li>
+          <li class="text-stone-600" aria-current="page">Realizacje</li>
+        </ol>
+      </nav>
+      <h1 class="text-4xl font-extrabold text-stone-900 sm:text-5xl">Nasze realizacje</h1>
+      <p class="mt-4 max-w-2xl text-lg text-stone-600 leading-relaxed">
+        Efekty naszej pracy mówią same za siebie. Każde zdjęcie to prawdziwa realizacja – przed i po cyklinowaniu bezpyłowym.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery – all photos -->
+  <Gallery limit={12} showLink={false} />
+
+  <!-- Schody section -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <h2 class="section-title text-center">Schody drewniane – realizacje</h2>
+      <p class="section-subtitle text-center mx-auto max-w-xl">
+        Realizacje Andrzeja Książczaka – schody drewniane wykonane i odrestaurowane w Siedlcach i okolicach.
+      </p>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {Array.from({ length: 8 }, (_, i) => (
+          <div class="overflow-hidden rounded-xl bg-stone-100 aspect-square">
+            <img
+              src={`/images/schody/schody-${i + 1}.jpg`}
+              alt={`Schody drewniane – realizacja ${i + 1}`}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              width="400" height="400"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA
+    title="Chcesz takie efekty?"
+    subtitle="Zadzwoń lub napisz – bezpłatna wycena i doradztwo w Siedlcach, Warszawie i okolicach."
+  />
+</Layout>

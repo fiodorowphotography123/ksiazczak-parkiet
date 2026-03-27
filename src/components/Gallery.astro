@@ -1,0 +1,112 @@
+---
+export interface Props {
+  limit?: number;
+  showLink?: boolean;
+}
+
+const { limit = 6, showLink = true } = Astro.props;
+
+// Replace with actual image paths from your /public/images/galeria/ folder
+const photos = [
+  {
+    before: '/images/galeria/przed-1.jpg',
+    after: '/images/galeria/po-1.jpg',
+    alt: 'Cyklinowanie parkietu – przed i po – realizacja Siedlce',
+    room: 'Salon, Siedlce',
+  },
+  {
+    before: '/images/galeria/przed-2.jpg',
+    after: '/images/galeria/po-2.jpg',
+    alt: 'Renowacja podłogi drewnianej – przed i po – Warszawa',
+    room: 'Sypialnia, Warszawa',
+  },
+  {
+    before: '/images/galeria/przed-3.jpg',
+    after: '/images/galeria/po-3.jpg',
+    alt: 'Szlifowanie desek – przed i po – Mińsk Mazowiecki',
+    room: 'Korytarz, Mińsk Maz.',
+  },
+  {
+    before: '/images/galeria/przed-4.jpg',
+    after: '/images/galeria/po-4.jpg',
+    alt: 'Cyklinowanie bezpyłowe parkietu – przed i po',
+    room: 'Salon',
+  },
+  {
+    before: '/images/galeria/przed-5.jpg',
+    after: '/images/galeria/po-5.jpg',
+    alt: 'Renowacja mozaiki parkietowej – przed i po',
+    room: 'Gabinet',
+  },
+  {
+    before: '/images/galeria/przed-6.jpg',
+    after: '/images/galeria/po-6.jpg',
+    alt: 'Olejowanie podłogi drewnianej – przed i po',
+    room: 'Pokój',
+  },
+];
+
+const displayed = photos.slice(0, limit);
+---
+
+<section class="section-padding bg-stone-50" id="realizacje" aria-labelledby="gallery-heading">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="section-title" id="gallery-heading">Nasze realizacje</h2>
+      <p class="section-subtitle mx-auto max-w-xl">
+        Efekty naszej pracy mówią same za siebie. Każda podłoga to nowa historia.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {displayed.map((photo) => (
+        <article class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-stone-100 transition-all hover:shadow-md">
+          <div class="grid grid-cols-2 divide-x divide-stone-100">
+            <!-- Before -->
+            <div class="relative overflow-hidden">
+              <div class="absolute left-2 top-2 z-10 rounded-full bg-black/60 px-2 py-0.5 text-xs font-medium text-white backdrop-blur-sm">Przed</div>
+              <img
+                src={photo.before}
+                alt={`Przed – ${photo.alt}`}
+                class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width="300"
+                height="200"
+                loading="lazy"
+                decoding="async"
+                onerror="this.closest('.grid').style.background='linear-gradient(135deg,#d6ccc2,#bcaaa4)';this.style.display='none'"
+              />
+            </div>
+            <!-- After -->
+            <div class="relative overflow-hidden">
+              <div class="absolute right-2 top-2 z-10 rounded-full bg-wood-500/90 px-2 py-0.5 text-xs font-medium text-white backdrop-blur-sm">Po</div>
+              <img
+                src={photo.after}
+                alt={`Po – ${photo.alt}`}
+                class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width="300"
+                height="200"
+                loading="lazy"
+                decoding="async"
+                onerror="this.closest('.grid').style.background='linear-gradient(135deg,#c8933a,#8b5e1a)';this.style.display='none'"
+              />
+            </div>
+          </div>
+          <div class="px-4 py-3">
+            <p class="text-sm font-medium text-stone-700">{photo.room}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {showLink && (
+      <div class="mt-10 text-center">
+        <a href="/realizacje" class="btn-secondary">
+          Zobacz wszystkie realizacje
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    )}
+  </div>
+</section>

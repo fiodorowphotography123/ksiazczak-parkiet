@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Gallery from '../components/Gallery.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import Reviews from '../components/Reviews.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { localBusinessSchema, howToSchema } from '../components/SchemaOrg.astro';
+---
+
+<Layout
+  title="Cyklinowanie Bezpyłowe Podłóg Siedlce i Warszawa | Książczak Parkiety"
+  description="Profesjonalne cyklinowanie bezpyłowe parkietów i podłóg drewnianych. Siedlce, Warszawa i okolice do 100 km. Ponad 25 lat doświadczenia. Bezpłatna wycena!"
+  schema={[localBusinessSchema, howToSchema]}
+>
+  <Hero />
+  <Services />
+  <HowItWorks />
+  <Gallery limit={6} showLink={true} />
+  <ServiceArea />
+  <Reviews />
+  <FAQ />
+  <ContactCTA />
+</Layout>

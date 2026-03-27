@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { localBusinessSchema } from '../components/SchemaOrg.astro';
+
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+---
+
+<Layout
+  title="Usługi Parkieciarskie – Lakierowanie, Olejowanie, Układanie | Książczak Siedlce"
+  description="Kompleksowe usługi parkieciarskie: lakierowanie i olejowanie podłóg drewnianych, układanie parkietu. Siedlce, Warszawa. Ponad 25 lat doświadczenia. Bezpłatna wycena!"
+  schema={localBusinessSchema}
+  breadcrumbs={[{ name: 'Usługi', url: '/uslugi' }]}
+>
+  <!-- Header -->
+  <section class="bg-stone-50 py-14 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-4 text-sm text-stone-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-1.5">
+          <li><a href="/" class="hover:text-stone-600 transition-colors">Strona główna</a></li>
+          <li>/</li>
+          <li class="text-stone-600" aria-current="page">Usługi</li>
+        </ol>
+      </nav>
+      <h1 class="text-4xl font-extrabold text-stone-900 sm:text-5xl">Nasze usługi</h1>
+      <p class="mt-4 max-w-2xl text-lg text-stone-600 leading-relaxed">
+        Kompleksowa obsługa podłóg drewnianych – od cyklinowania, przez lakierowanie, po układanie nowych parkietów. Siedlce, Warszawa i okolice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lakierowanie -->
+  <section class="section-padding bg-white" id="lakierowanie">
+    <div class="container-max">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full bg-wood-50 px-4 py-1.5 text-sm font-medium text-wood-600 mb-5">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 21H3a1 1 0 01-1-1v-4a1 1 0 011-1h4v6zm7-2H10v-4h4v4zm7 2h-5v-6h4a1 1 0 011 1v4a1 1 0 01-1 1zM12 3l-8 6h4v8h8v-8h4L12 3z"/></svg>
+            Usługa
+          </div>
+          <h2 class="section-title">Lakierowanie podłóg drewnianych</h2>
+          <div class="mt-6 space-y-4 text-stone-600 leading-relaxed">
+            <p>
+              Lakierowanie tworzy <strong class="text-stone-900">twardą powłokę ochronną</strong> na powierzchni drewna, odporną na ścieranie, wodę i zabrudzenia. Idealne do intensywnie użytkowanych pomieszczeń: kuchni, korytarzy, salonów.
+            </p>
+            <p>
+              Stosujemy <strong class="text-stone-900">wysokiej jakości lakiery wodne i poliuretanowe</strong> renomowanych producentów. Nakładamy 2–3 warstwy z pełnym schnięciem między nimi. Efekt: trwałość 10–15 lat.
+            </p>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            {['Lakier matowy', 'Lakier satynowy', 'Lakier połysk', 'Lakier UV'].map(type => (
+              <div class="flex items-center gap-2 text-sm text-stone-700">
+                <svg class="h-4 w-4 text-green-500 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {type}
+              </div>
+            ))}
+          </div>
+          <div class="mt-6 rounded-xl bg-stone-50 p-4 ring-1 ring-stone-100">
+            <p class="text-sm font-medium text-stone-900">Cena: <span class="text-wood-600">od 15 zł/m²</span> za warstwę</p>
+            <p class="text-xs text-stone-500 mt-0.5">Zazwyczaj 2–3 warstwy. Dokładna wycena bezpłatna.</p>
+          </div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl bg-stone-100 h-72 lg:h-96">
+          <img
+            src="/images/uslugi/lakierowanie.jpg"
+            alt="Lakierowanie podłogi drewnianej – Książczak Parkiety Siedlce"
+            class="w-full h-full object-cover"
+            width="600" height="400"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
+          <div class="absolute inset-0 flex items-center justify-center bg-stone-200/50 text-stone-400 text-sm -z-10">Zdjęcie usługi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Olejowanie -->
+  <section class="section-padding bg-stone-50" id="olejowanie">
+    <div class="container-max">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+        <div class="order-2 lg:order-1 relative overflow-hidden rounded-2xl bg-stone-100 h-72 lg:h-96">
+          <img
+            src="/images/uslugi/olejowanie.jpg"
+            alt="Olejowanie podłogi drewnianej – naturalny efekt – Siedlce"
+            class="w-full h-full object-cover"
+            width="600" height="400"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
+          <div class="absolute inset-0 flex items-center justify-center bg-stone-200/50 text-stone-400 text-sm -z-10">Zdjęcie usługi</div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-700 mb-5">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.78 2.2L22 4.42 11.68 14.74c.42.58.68 1.29.68 2.06 0 1.93-1.57 3.5-3.5 3.5S5.36 18.73 5.36 16.8c0-1.93 1.57-3.5 3.5-3.5.77 0 1.48.26 2.06.68L19.78 2.2z"/></svg>
+            Naturalne wykończenie
+          </div>
+          <h2 class="section-title">Olejowanie podłóg drewnianych</h2>
+          <div class="mt-6 space-y-4 text-stone-600 leading-relaxed">
+            <p>
+              Olejowanie to <strong class="text-stone-900">naturalna alternatywa dla lakieru</strong>. Olej wnika w strukturę drewna, odżywiając je od środka i podkreślając naturalne usłojenie. Podłoga oddycha i ma ciepły, matowy wygląd.
+            </p>
+            <p>
+              Największą zaletą olejowania jest <strong class="text-stone-900">łatwa naprawa miejscowych uszkodzeń</strong> – zarysowane miejsca można odnawiać punktowo, bez konieczności szlifowania całej podłogi.
+            </p>
+          </div>
+          <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {[
+              { label: 'Naturalny wygląd', desc: 'Podkreśla usłojenie drewna' },
+              { label: 'Punktowa naprawa', desc: 'Bez szlifowania całości' },
+              { label: 'Eco-friendly', desc: 'Niskie VOC, przyjazne środowisku' },
+              { label: 'Ciepło w dotyku', desc: 'Brak plastikowego efektu' },
+            ].map(item => (
+              <div class="flex items-start gap-2">
+                <svg class="h-4 w-4 text-green-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <div>
+                  <p class="text-sm font-medium text-stone-900">{item.label}</p>
+                  <p class="text-xs text-stone-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-6 rounded-xl bg-amber-50 p-4 ring-1 ring-amber-100">
+            <p class="text-sm font-medium text-stone-900">Cena: <span class="text-amber-700">od 20 zł/m²</span></p>
+            <p class="text-xs text-stone-500 mt-0.5">Cena obejmuje 2 warstwy oleju. Bezpłatna wycena.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Układanie -->
+  <section class="section-padding bg-white" id="ukladanie">
+    <div class="container-max">
+      <div class="text-center">
+        <h2 class="section-title">Układanie parkietu i desek drewnianych</h2>
+        <p class="section-subtitle mx-auto max-w-2xl">
+          Instalujemy nowe podłogi drewniane w każdym wzorze i gatunku. Pełna usługa – od doradztwa po gotową podłogę.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          {
+            title: 'Parkiet lamelowy',
+            desc: 'Klasyczny parkiet układany z małych kawałków drewna w różne wzory: jodełkę, cegiełkę, karo.',
+            img: '/images/uslugi/parkiet-lamelowy.jpg',
+          },
+          {
+            title: 'Deski drewniane',
+            desc: 'Szerokie deski lite lub warstwowe – nowoczesny, elegancki wygląd. Dąb, jesion, buk i inne gatunki.',
+            img: '/images/uslugi/deski.jpg',
+          },
+          {
+            title: 'Mozaika parkietowa',
+            desc: 'Klasyczne elementy parkietu drewnianego układane w kwadraty lub inne geometryczne wzory.',
+            img: '/images/uslugi/mozaika.jpg',
+          },
+        ].map(item => (
+          <article class="overflow-hidden rounded-2xl bg-stone-50 ring-1 ring-stone-100 transition-all hover:shadow-md">
+            <div class="relative h-48 bg-stone-200 overflow-hidden">
+              <img
+                src={item.img}
+                alt={item.title}
+                class="h-full w-full object-cover"
+                width="400" height="200"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              />
+              <div class="absolute inset-0 flex items-center justify-center text-stone-400 text-sm -z-10">Zdjęcie</div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base font-bold text-stone-900">{item.title}</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</Layout>

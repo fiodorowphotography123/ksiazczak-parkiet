@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { localBusinessSchema } from '../components/SchemaOrg.astro';
+
+const PHONE = '+48 XXX XXX XXX';
+const PHONE_HREF = 'tel:+48XXXXXXXXX';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Cyklinowanie bezpyłowe parkietu i podłóg drewnianych',
+  description:
+    'Profesjonalne szlifowanie podłóg drewnianych metodą bezpyłową. Siedlce, Warszawa i okolice. Bez bałaganu, bez pyłu – idealne dla alergików i rodzin z dziećmi.',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Książczak Parkiety i Schody',
+    '@id': 'https://ksiazczak-parkiet.pl/#business',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Siedlce' },
+    { '@type': 'City', name: 'Warszawa' },
+    { '@type': 'State', name: 'Mazowieckie' },
+  ],
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'PLN',
+    price: '25',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PLN',
+      price: '25',
+      unitText: 'm²',
+      description: 'Cena od 25 zł/m² w zależności od stanu podłogi',
+    },
+  },
+};
+
+const faqItems = [
+  {
+    q: 'Czym jest cyklinowanie bezpyłowe?',
+    a: 'Cyklinowanie bezpyłowe to szlifowanie podłogi drewnianej maszyną wyposażoną w system wysokociśnieniowego odkurzania. Ponad 99% pyłu jest wyłapywane na bieżąco – nie trzeba wynosić wszystkich mebli ani zabezpieczać całego domu. To zdrowsza i wygodniejsza alternatywa dla tradycyjnego cyklinowania.',
+  },
+  {
+    q: 'Ile kosztuje cyklinowanie bezpyłowe?',
+    a: 'Cena zaczyna się od 25 zł/m² za samo szlifowanie. Przy kompleksowym zleceniu (szlifowanie + lakierowanie lub olejowanie) cena wynosi zazwyczaj 50–70 zł/m². Dokładną wycenę przygotowujemy po obejrzeniu podłogi – ta usługa jest bezpłatna.',
+  },
+  {
+    q: 'Czy bezpyłowe cyklinowanie jest bezpieczne dla alergików?',
+    a: 'Tak. System odkurzania pochłania ponad 99% pyłu drzewnego, co znacząco redukuje ryzyko reakcji alergicznych. To idealny wybór dla rodzin z dziećmi, astmatykami i alergicznymi.',
+  },
+  {
+    q: 'Jak długo trwa cyklinowanie bezpyłowe?',
+    a: 'Szlifowanie typowego salonu (20–30 m²) zajmuje 4–6 godzin. Pełna renowacja z lakierowaniem (3 warstwy) – 2–3 dni robocze. Po ostatniej warstwie lakieru podłoga jest chodna po 24h.',
+  },
+];
+---
+
+<Layout
+  title="Cyklinowanie Bezpyłowe Podłóg – Siedlce, Warszawa | 25 lat | Książczak"
+  description="Cyklinowanie bezpyłowe parkietów i podłóg drewnianych w Siedlcach i Warszawie. Technologia bez pyłu, od 25 zł/m². Ponad 25 lat doświadczenia. ☎ Bezpłatna wycena!"
+  schema={[localBusinessSchema, serviceSchema]}
+  breadcrumbs={[{ name: 'Cyklinowanie bezpyłowe', url: '/cyklinowanie-bezpylowe' }]}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-stone-900 to-stone-800 py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav class="mb-6 text-sm text-stone-400" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-1.5">
+            <li><a href="/" class="hover:text-stone-200 transition-colors">Strona główna</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-stone-300" aria-current="page">Cyklinowanie bezpyłowe</li>
+          </ol>
+        </nav>
+        <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+          Cyklinowanie <span class="text-wood-400">bezpyłowe</span><br/>
+          parkietów i podłóg drewnianych
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-stone-300">
+          Nowoczesna technologia bez pyłu – idealna dla rodzin z dziećmi i alergików. Pracujemy w Siedlcach, Warszawie i okolicach. Efekty trwałe, praca staranna.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={PHONE_HREF} class="btn-primary text-base py-4 px-7">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            Zadzwoń: {PHONE}
+          </a>
+          <a href="/cennik" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
+            Zobacz cennik
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co to jest bezpyłowe -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h2 class="section-title">Na czym polega cyklinowanie bezpyłowe?</h2>
+          <div class="mt-6 space-y-4 text-stone-600 leading-relaxed">
+            <p>
+              Tradycyjne cyklinowanie wytwarza ogromne ilości pyłu drzewnego, który osiada na meblach, dywanach i sprzętach elektronicznych. Cyklinowanie bezpyłowe korzysta z <strong class="text-stone-900">nowoczesnych maszyn wyposażonych w system wysokociśnieniowego odkurzania</strong>, który wyłapuje ponad 99% pyłu bezpośrednio w miejscu jego powstawania.
+            </p>
+            <p>
+              Oznacza to, że podczas pracy w Twoim domu nie ma bałaganu. Nie musisz wynosić mebli z sąsiednich pokojów ani martwić się o sprzęt elektroniczny. Nasza maszyna działa jak gigantyczny odkurzacz przemysłowy zintegrowany z głowicą szlifierską.
+            </p>
+            <p>
+              Efekt końcowy jest identyczny jak przy tradycyjnym cyklinowaniu – podłoga jest idealnie wyszlifowana, gotowa pod lakierowanie lub olejowanie. Różnica polega tylko na komforcie pracy i zdrowiu domowników.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🫧', title: '99% mniej pyłu', desc: 'System zamkniętego obiegu pochłania praktycznie cały pył drzewny' },
+            { icon: '👨‍👩‍👧', title: 'Bezpieczne dla rodziny', desc: 'Idealne dla dzieci, alergików i astmatyków' },
+            { icon: '⚡', title: 'Szybka realizacja', desc: 'Salon (20–30 m²) gotowy w ciągu jednego dnia' },
+            { icon: '🏠', title: 'Bez przeprowadzki', desc: 'Nie musisz opuszczać domu na czas pracy' },
+          ].map(card => (
+            <div class="rounded-xl bg-stone-50 p-5 text-center ring-1 ring-stone-100">
+              <div class="text-3xl" aria-hidden="true">{card.icon}</div>
+              <p class="mt-2 text-sm font-semibold text-stone-900">{card.title}</p>
+              <p class="mt-1 text-xs text-stone-600 leading-snug">{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typy podłóg -->
+  <section class="section-padding bg-stone-50">
+    <div class="container-max">
+      <h2 class="section-title text-center">Jakie podłogi cyklinujemy?</h2>
+      <p class="section-subtitle text-center mx-auto max-w-xl">
+        Pracujemy ze wszystkimi podłogami z litego drewna i drewna warstwowego.
+      </p>
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {[
+          'Parkiet dębowy', 'Deski sosnowe', 'Mozaika parkietowa',
+          'Jesion', 'Buk', 'Bambus i egzotyki',
+        ].map(type => (
+          <div class="rounded-xl bg-white p-4 text-center shadow-sm ring-1 ring-stone-100">
+            <p class="text-sm font-medium text-stone-800">{type}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-stone-500">
+        Nie cyklinujemy paneli laminowanych ani desek WPC. <a href="/kontakt" class="text-wood-600 font-medium hover:underline">Zapytaj o swoją podłogę →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Etapy pracy -->
+  <section class="section-padding bg-white">
+    <div class="container-max">
+      <h2 class="section-title text-center">Etapy cyklinowania</h2>
+      <div class="mt-10 space-y-6 max-w-2xl mx-auto">
+        {[
+          { n: 1, title: 'Przygotowanie podłogi', desc: 'Sprawdzamy stan podłogi, usuwamy wystające gwoździe, oceniamy czy wymagane jest szpachlowanie szpar.' },
+          { n: 2, title: 'Szlifowanie zgrubne (papier 40)', desc: 'Usuwamy starą powłokę lakieru/oleju i wyrównujemy powierzchnię. Maszyna pracuje wzdłuż słojów.' },
+          { n: 3, title: 'Szlifowanie pośrednie (papier 60–80)', desc: 'Wygładzamy powierzchnię i eliminujemy rysy po poprzednim papierze.' },
+          { n: 4, title: 'Szpachlowanie i szlif końcowy (papier 100–120)', desc: 'Wypełniamy szpary masą parkietową, finalne wygładzenie powierzchni.' },
+          { n: 5, title: 'Wykończenie (lakier lub olej)', desc: 'Nakładamy 2–3 warstwy lakieru wodnego/olejowego lub oleju według wyboru klienta.' },
+        ].map(step => (
+          <div class="flex gap-5">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-wood-500 text-sm font-bold text-white">{step.n}</div>
+            <div class="pb-6 border-b border-stone-100 last:border-0 flex-1">
+              <p class="font-semibold text-stone-900">{step.title}</p>
+              <p class="mt-1 text-sm text-stone-600 leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+  <ContactCTA
+    title="Zamów cyklinowanie bezpyłowe"
+    subtitle="Zadzwoń lub napisz – przyjedziemy na bezpłatną wycenę do Siedlec, Warszawy i okolic."
+  />
+</Layout>

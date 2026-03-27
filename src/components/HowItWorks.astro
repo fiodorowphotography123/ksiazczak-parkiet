@@ -1,0 +1,51 @@
+---
+const steps = [
+  {
+    step: '01',
+    title: 'Bezpłatna wycena',
+    description: 'Skontaktuj się z nami telefonicznie lub przez formularz. Przyjedziemy na miejsce i bezpłatnie ocenimy stan podłogi oraz przygotujemy wycenę.',
+  },
+  {
+    step: '02',
+    title: 'Profesjonalne cyklinowanie',
+    description: 'Wykonujemy cyklinowanie nowoczesną maszyną bezpyłową. Technologia zamkniętego obiegu zatrzymuje ponad 99% pyłu. Brak bałaganu w domu.',
+  },
+  {
+    step: '03',
+    title: 'Wykończenie i efekt końcowy',
+    description: 'Po cyklinowaniu nakładamy lakier lub olej wg Twojego wyboru. Podłoga odzyskuje blask i piękno jak nowa – z gwarancją jakości.',
+  },
+];
+---
+
+<section class="section-padding bg-white" id="jak-dzialamy" aria-labelledby="how-heading">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="section-title" id="how-heading">Jak pracujemy?</h2>
+      <p class="section-subtitle mx-auto max-w-xl">
+        Prosto, solidnie i bezpyłowo. Oto jak wygląda każde zlecenie.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
+      {steps.map((step, i) => (
+        <div class="relative flex flex-col items-center text-center sm:items-start sm:text-left">
+          {/* Connector line between steps (hidden on mobile) */}
+          {i < steps.length - 1 && (
+            <div class="absolute left-[calc(50%+40px)] top-6 hidden h-0.5 w-[calc(100%-48px)] bg-wood-100 sm:block" aria-hidden="true"></div>
+          )}
+
+          {/* Step number */}
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-wood-500 text-xl font-extrabold text-white shadow-md shadow-wood-500/30">
+            {step.step}
+          </div>
+
+          <h3 class="mt-5 text-lg font-bold text-stone-900">{step.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-stone-600">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* HowTo schema is injected via page-level SchemaOrg */}
+  </div>
+</section>
