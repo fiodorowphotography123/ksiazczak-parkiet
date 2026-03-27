@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { localBusinessSchema } from '../components/SchemaOrg.astro';
+import { CONTACT, ADDRESS } from '../config';
 
-const PHONE = '+48 XXX XXX XXX';
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
-const EMAIL = 'kontakt@ksiazczak-parkiet.pl';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
+const EMAIL = CONTACT.email;
 ---
 
 <Layout
@@ -161,7 +162,10 @@ const EMAIL = 'kontakt@ksiazczak-parkiet.pl';
             </div>
             <div>
               <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Telefon</p>
-              <a href={PHONE_HREF} class="mt-1 text-xl font-bold text-stone-900 hover:text-wood-600 transition-colors">{PHONE}</a>
+              <a href={PHONE_HREF} class="mt-1 block text-xl font-bold text-stone-900 hover:text-wood-600 transition-colors">{PHONE}</a>
+              <p class="text-xs text-stone-400">{CONTACT.phoneLabel}</p>
+              <a href={CONTACT.phoneSecondHref} class="mt-2 block text-xl font-bold text-stone-900 hover:text-wood-600 transition-colors">{CONTACT.phoneSecond}</a>
+              <p class="text-xs text-stone-400">{CONTACT.phoneSecondLabel}</p>
               <p class="mt-1 text-sm text-stone-500">Pon–Pt: 7:00–18:00 · Sob: 8:00–14:00</p>
             </div>
           </div>
@@ -188,8 +192,8 @@ const EMAIL = 'kontakt@ksiazczak-parkiet.pl';
             </div>
             <div>
               <p class="text-sm font-semibold text-stone-500 uppercase tracking-wider">Lokalizacja</p>
-              <p class="mt-1 text-lg font-bold text-stone-900">Siedlce, woj. mazowieckie</p>
-              <p class="mt-1 text-sm text-stone-500">Obsługujemy obszar do 100 km od Siedlec i Warszawa</p>
+              <p class="mt-1 text-lg font-bold text-stone-900">ul. 11-go Listopada 61, 08-140 Mordy</p>
+              <p class="mt-1 text-sm text-stone-500">woj. mazowieckie · Obsługujemy do 100 km + Warszawa</p>
             </div>
           </div>
 

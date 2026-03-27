@@ -1,6 +1,7 @@
 ---
-const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
-const PHONE_HREF = 'tel:+48XXXXXXXXX'; // ← zmień na prawdziwy numer
+import { CONTACT } from '../config';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
 
 const navLinks = [
   { href: '/', label: 'Strona główna' },
@@ -8,28 +9,27 @@ const navLinks = [
   { href: '/uslugi', label: 'Usługi' },
   { href: '/schody-drewniane', label: 'Schody' },
   { href: '/realizacje', label: 'Realizacje' },
-  { href: '/cennik', label: 'Cennik' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
+<!--
+  Hamburger CSS-only: input.peer musi być bezpośrednim poprzednim rodzeństwem nav.mobile-menu
+  Przenosimy input PRZED main-row div, dzięki czemu jest sąsiadem nav na poziomie headera.
+-->
 <header class="sticky top-0 z-50 border-b border-stone-100 bg-white/95 backdrop-blur-sm">
+
+  <!-- Checkbox – pierwsze dziecko headera, peer dla Tailwind sibling selector -->
+  <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-label="Otwórz menu nawigacji" />
+
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
 
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 text-stone-900 hover:text-wood-600 transition-colors" aria-label="Książczak Parkiety i Schody – strona główna">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#C8933A"/>
-          <path d="M6 22 L16 8 L26 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <rect x="8" y="22" width="16" height="4" rx="1" fill="white"/>
-        </svg>
-        <span class="font-bold text-base leading-tight">
-          Książczak<br/>
-          <span class="text-wood-500 font-semibold text-sm">Parkiety i Schody</span>
-        </span>
+        <img src="/parkiety-logo-czarne.png" alt="Książczak Parkiety i Schody" width="160" height="60" class="h-10 w-auto" />
       </a>
 
       <!-- Desktop nav -->
@@ -61,7 +61,7 @@ const currentPath = Astro.url.pathname;
         {PHONE}
       </a>
 
-      <!-- Mobile: hamburger (CSS-only, checkbox hack) -->
+      <!-- Mobile: phone button + hamburger label (animacja przez JS, menu przez CSS peer) -->
       <div class="lg:hidden flex items-center gap-3">
         <a
           href={PHONE_HREF}
@@ -73,7 +73,6 @@ const currentPath = Astro.url.pathname;
           </svg>
         </a>
 
-        <input type="checkbox" id="nav-toggle" class="sr-only" aria-label="Otwórz menu" />
         <label for="nav-toggle" class="flex flex-col gap-[5px] cursor-pointer p-2" aria-label="Menu">
           <span class="hamburger-top block h-0.5 w-6 bg-stone-800 rounded-full"></span>
           <span class="hamburger-mid block h-0.5 w-6 bg-stone-800 rounded-full"></span>
@@ -83,9 +82,12 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile menu (hidden by default, shown via CSS when checkbox checked) -->
+  <!--
+    Mobile menu: peer-checked:flex działa bo input.peer jest poprzednim rodzeństwem nav
+    na poziomie headera. lg:hidden overrides peer-checked:flex na dużych ekranach.
+  -->
   <nav
-    class="mobile-menu hidden lg:hidden flex-col border-t border-stone-100 bg-white px-4 pb-4 pt-2"
+    class="hidden peer-checked:flex lg:!hidden flex-col border-t border-stone-100 bg-white px-4 pb-4 pt-2"
     aria-label="Nawigacja mobilna"
   >
     {navLinks.map((link) => (
@@ -110,3 +112,10 @@ const currentPath = Astro.url.pathname;
     </a>
   </nav>
 </header>
+
+<!-- Minimalna animacja hamburgera (toggle klasy .nav-open na label) -->
+<script>
+  const toggle = document.getElementById('nav-toggle') as HTMLInputElement | null;
+  const label = document.querySelector('label[for="nav-toggle"]');
+  toggle?.addEventListener('change', () => label?.classList.toggle('nav-open', toggle.checked));
+</script>

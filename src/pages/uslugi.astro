@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { localBusinessSchema } from '../components/SchemaOrg.astro';
+import { CONTACT } from '../config';
 
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
+const PHONE_HREF = CONTACT.phoneHref;
 ---
 
 <Layout

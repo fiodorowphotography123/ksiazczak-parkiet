@@ -1,6 +1,7 @@
 ---
-const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
+import { CONTACT } from '../config';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
 ---
 
 <section class="relative overflow-hidden bg-stone-900">
@@ -8,8 +9,8 @@ const PHONE_HREF = 'tel:+48XXXXXXXXX';
   <div class="absolute inset-0 z-0">
     <!-- Replace this with your real hero photo -->
     <img
-      src="/images/hero-parkiet.jpg"
-      alt="Piękna drewniana podłoga po cyklinowaniu bezpyłowym – Ksiązak Parkiety Siedlce"
+      src="/hero.jpg"
+      alt="Piękna drewniana podłoga po cyklinowaniu bezpyłowym – Książczak Parkiety Siedlce"
       class="h-full w-full object-cover object-center"
       width="1200"
       height="700"

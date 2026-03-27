@@ -1,31 +1,35 @@
 ---
+import { CONTACT, ADDRESS, SITE } from '../config';
+
 // Central place for all schema.org structured data
 // Exported as individual schema objects to be passed to Layout
 
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://ksiazczak-parkiet.pl/#business',
-  name: 'Książczak Parkiety i Schody',
+  '@id': `${SITE.url}/#business`,
+  name: SITE.name,
   alternateName: ['Krzysztof Książczak Parkiety', 'Książczak Cyklinowanie Siedlce'],
   description:
     'Profesjonalne cyklinowanie bezpyłowe podłóg drewnianych, parkietów, desek i schodów drewnianych. Ponad 25 lat doświadczenia. Obsługujemy Siedlce, Warszawę i okolicę w promieniu 100 km.',
-  url: 'https://ksiazczak-parkiet.pl',
-  telephone: '+48XXXXXXXXX', // ← zmień na prawdziwy numer
-  email: 'kontakt@ksiazczak-parkiet.pl', // ← zmień
+  url: SITE.url,
+  telephone: CONTACT.phoneHref.replace('tel:', ''),
+  email: CONTACT.email,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Siedlce',
-    addressRegion: 'Mazowieckie',
-    postalCode: '08-110', // ← zmień jeśli inny
-    addressCountry: 'PL',
+    ...(ADDRESS.street ? { streetAddress: ADDRESS.street } : {}),
+    addressLocality: ADDRESS.city,
+    addressRegion: ADDRESS.region,
+    postalCode: ADDRESS.postalCode,
+    addressCountry: ADDRESS.country,
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '52.1678',
-    longitude: '22.2903',
+    latitude: ADDRESS.lat,
+    longitude: ADDRESS.lng,
   },
   areaServed: [
+    { '@type': 'City', name: 'Mordy' },
     { '@type': 'City', name: 'Siedlce' },
     { '@type': 'City', name: 'Warszawa' },
     { '@type': 'City', name: 'Mińsk Mazowiecki' },
@@ -101,8 +105,8 @@ export const localBusinessSchema = {
     ratingCount: '47', // ← zaktualizuj wg rzeczywistej liczby opinii
   },
   sameAs: [
-    'https://www.facebook.com/profile.php?id=100087186586035',
-    'https://g.co/kgs/r7Xu2b',
+    CONTACT.facebook,
+    CONTACT.google,
   ],
 };
 

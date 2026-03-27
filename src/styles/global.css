@@ -72,28 +72,21 @@
     transition: transform 0.2s ease;
   }
 
-  /* Mobile nav checkbox hack */
-  #nav-toggle {
-    display: none;
-  }
-  #nav-toggle:checked ~ .mobile-menu {
-    display: flex;
-  }
-  #nav-toggle:checked ~ label .hamburger-top {
-    transform: translateY(6px) rotate(45deg);
-  }
-  #nav-toggle:checked ~ label .hamburger-mid {
-    opacity: 0;
-  }
-  #nav-toggle:checked ~ label .hamburger-bot {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
+  /* Hamburger animation – klasa .nav-open dodawana przez JS na label */
   .hamburger-top,
   .hamburger-mid,
   .hamburger-bot {
     transition: transform 0.3s ease, opacity 0.2s ease;
     transform-origin: center;
+  }
+  label[for="nav-toggle"].nav-open .hamburger-top {
+    transform: translateY(6px) rotate(45deg);
+  }
+  label[for="nav-toggle"].nav-open .hamburger-mid {
+    opacity: 0;
+  }
+  label[for="nav-toggle"].nav-open .hamburger-bot {
+    transform: translateY(-6px) rotate(-45deg);
   }
 }
 

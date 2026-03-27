@@ -1,6 +1,7 @@
 ---
-const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
+import { CONTACT } from '../config';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
 
 export interface Props {
   title?: string;

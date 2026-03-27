@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { localBusinessSchema } from '../components/SchemaOrg.astro';
+import { CONTACT } from '../config';
 
-const PHONE = '+48 XXX XXX XXX';
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
+const PHONE = CONTACT.phoneSecond;      // Andrzej – schody
+const PHONE_HREF = CONTACT.phoneSecondHref;
 
 const stairsSchema = {
   '@context': 'https://schema.org',

@@ -3,9 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import FAQ from '../components/FAQ.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { localBusinessSchema } from '../components/SchemaOrg.astro';
+import { CONTACT } from '../config';
 
-const PHONE = '+48 XXX XXX XXX';
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
 
 const serviceSchema = {
   '@context': 'https://schema.org',
@@ -88,8 +89,8 @@ const faqItems = [
             </svg>
             Zadzwoń: {PHONE}
           </a>
-          <a href="/cennik" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
-            Zobacz cennik
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:bg-white/10">
+            Bezpłatna wycena
           </a>
         </div>
       </div>

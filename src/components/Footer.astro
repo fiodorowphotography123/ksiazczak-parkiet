@@ -1,7 +1,8 @@
 ---
-const PHONE = '+48 XXX XXX XXX'; // ← zmień na prawdziwy numer
-const PHONE_HREF = 'tel:+48XXXXXXXXX';
-const EMAIL = 'kontakt@ksiazczak-parkiet.pl'; // ← zmień na prawdziwy email
+import { CONTACT, BUSINESS } from '../config';
+const PHONE = CONTACT.phone;
+const PHONE_HREF = CONTACT.phoneHref;
+const EMAIL = CONTACT.email;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,15 +13,7 @@ const currentYear = new Date().getFullYear();
       <!-- Brand -->
       <div class="sm:col-span-2 lg:col-span-1">
         <a href="/" class="flex items-center gap-2 text-white hover:text-wood-300 transition-colors">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#C8933A"/>
-            <path d="M6 22 L16 8 L26 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <rect x="8" y="22" width="16" height="4" rx="1" fill="white"/>
-          </svg>
-          <span class="font-bold text-base leading-tight">
-            Książczak<br/>
-            <span class="text-wood-400 font-semibold text-sm">Parkiety i Schody</span>
-          </span>
+          <img src="/parkiety-logo-bialy.png" alt="Książczak Parkiety i Schody" width="160" height="60" class="h-10 w-auto" />
         </a>
         <p class="mt-4 text-sm leading-relaxed text-stone-400">
           Rodzinna firma z ponad 25-letnim doświadczeniem. Specjalizujemy się w cyklinowaniu bezpyłowym podłóg drewnianych i schodach drewnianych.
@@ -45,7 +38,6 @@ const currentYear = new Date().getFullYear();
         <h3 class="text-sm font-semibold uppercase tracking-wider text-stone-200">Firma</h3>
         <ul class="mt-4 space-y-2 text-sm">
           <li><a href="/realizacje" class="text-stone-400 hover:text-wood-300 transition-colors">Nasze realizacje</a></li>
-          <li><a href="/cennik" class="text-stone-400 hover:text-wood-300 transition-colors">Cennik usług</a></li>
           <li><a href="/kontakt" class="text-stone-400 hover:text-wood-300 transition-colors">Kontakt</a></li>
           <li>
             <a href="https://www.facebook.com/profile.php?id=100087186586035" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-wood-300 transition-colors">
@@ -64,7 +56,15 @@ const currentYear = new Date().getFullYear();
               <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              {PHONE}
+              {PHONE} <span class="text-stone-500">({CONTACT.phoneLabel})</span>
+            </a>
+          </li>
+          <li>
+            <a href={CONTACT.phoneSecondHref} class="flex items-center gap-2 text-stone-400 hover:text-wood-300 transition-colors">
+              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              {CONTACT.phoneSecond} <span class="text-stone-500">({CONTACT.phoneSecondLabel})</span>
             </a>
           </li>
           <li>
@@ -79,7 +79,7 @@ const currentYear = new Date().getFullYear();
             <svg class="h-4 w-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            Siedlce, woj. mazowieckie<br/>Obsługujemy teren do 100 km
+            ul. 11-go Listopada 61<br/>08-140 Mordy, woj. mazowieckie<br/>Obsługujemy teren do 100 km
           </li>
         </ul>
       </div>
@@ -96,7 +96,7 @@ const currentYear = new Date().getFullYear();
     <!-- Bottom bar -->
     <div class="mt-6 flex flex-col items-center justify-between gap-3 border-t border-stone-800 pt-6 text-xs text-stone-500 sm:flex-row">
       <p>© {currentYear} Książczak Parkiety i Schody. Wszelkie prawa zastrzeżone.</p>
-      <p>NIP: XXXXXXXXXX · Siedlce, Polska</p>
+      <p>NIP: {BUSINESS.nip} · Siedlce, Polska</p>
     </div>
   </div>
 </footer>
