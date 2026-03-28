@@ -118,19 +118,31 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     </main>
     <Footer />
     <StickyPhone />
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+    <script is:inline>
+      function initAnimations() {
+        const elements = document.querySelectorAll('[data-animate]:not(.in-view)');
+        if (!elements.length) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        elements.forEach((el) => observer.observe(el));
+      }
+      // Run on initial load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAnimations);
+      } else {
+        initAnimations();
+      }
+      // Re-run after Astro client-side navigation (View Transitions)
+      document.addEventListener('astro:page-load', initAnimations);
     </script>
   </body>
 </html>
