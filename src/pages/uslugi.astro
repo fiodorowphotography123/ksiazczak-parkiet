@@ -219,7 +219,6 @@ const imgs = {
     <div class="container-max">
       <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
         <div>
-          <div class="inline-flex items-center gap-2 rounded-full bg-wood-50 px-4 py-1.5 text-sm font-medium text-wood-600 mb-5 order-placeholder">
           <div class="inline-flex items-center gap-2 rounded-full bg-wood-50 px-4 py-1.5 text-sm font-medium text-wood-600 mb-5">
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v2H3V3zm0 8h18v2H3v-2zm0 8h18v2H3v-2zm0-4h12v2H3v-2zm0-8h12v2H3V7z"/></svg>
             Wykończenie
@@ -245,6 +244,10 @@ const imgs = {
             <p class="text-sm font-medium text-stone-900">Bezpłatna wycena – <a href="/kontakt" class="text-wood-600 hover:underline">skontaktuj się z nami</a></p>
             <p class="text-xs text-stone-500 mt-0.5">Cena zależy od rodzaju listwy i długości. Wycena po oględzinach.</p>
           </div>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl bg-stone-100 h-72 lg:h-96" data-animate="fade" style="transition-delay: 200ms">
+          {imgs.listwowanie && <Image src={imgs.listwowanie} alt="Montaż listew przypodłogowych – Książczak Parkiety" class="w-full h-full object-cover" width={600} height={400} loading="lazy" format="webp" quality={82} />}
+          {!imgs.listwowanie && <div class="absolute inset-0 flex items-center justify-center bg-stone-200/50 text-stone-400 text-sm">Zdjęcie listwowania</div>}
         </div>
       </div>
     </div>
