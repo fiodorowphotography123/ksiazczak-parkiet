@@ -44,7 +44,7 @@ const PHONE_HREF = CONTACT.phoneHref;
       <h1
         data-animate
         style="transition-delay: 80ms"
-        class="text-3xl font-bold leading-tight tracking-tight text-white text-balance sm:text-5xl"
+        class="text-2xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl md:text-5xl"
       >
         Profesjonalne usługi<br/>
         <span class="text-wood-400">parkieciarskie</span><br/>
@@ -54,7 +54,7 @@ const PHONE_HREF = CONTACT.phoneHref;
       <p
         data-animate
         style="transition-delay: 160ms"
-        class="mt-6 text-base leading-relaxed text-stone-300 text-balance sm:text-lg"
+        class="mt-5 text-sm leading-relaxed text-stone-300 text-balance sm:mt-6 sm:text-lg"
       >
         Cyklinowanie bezpyłowe, lakierowanie i olejowanie podłóg, układanie parkietu oraz <strong class="text-white">schody drewniane na wymiar</strong>.
         Rodzinna firma braci Książczak – ponad 25 lat doświadczenia.
@@ -65,21 +65,21 @@ const PHONE_HREF = CONTACT.phoneHref;
       <div
         data-animate
         style="transition-delay: 240ms"
-        class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
+        class="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4"
       >
         <a
           href={PHONE_HREF}
-          class="inline-flex items-center justify-center gap-2 rounded-full bg-wood-500 px-7 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-wood-600 active:scale-95"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-wood-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-wood-600 active:scale-95 sm:px-7 sm:py-4 sm:text-base"
           aria-label={`Zadzwoń: ${PHONE}`}
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
           Zadzwoń: {PHONE}
         </a>
         <a
           href="/kontakt"
-          class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-7 py-4 text-base font-semibold text-white transition-all hover:border-white hover:bg-white/10 active:scale-95"
+          class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10 active:scale-95 sm:px-7 sm:py-4 sm:text-base"
         >
           Bezpłatna wycena
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -92,7 +92,7 @@ const PHONE_HREF = CONTACT.phoneHref;
       <div
         data-animate
         style="transition-delay: 320ms"
-        class="mt-10 flex flex-wrap gap-6 text-sm text-stone-400"
+        class="mt-8 flex flex-wrap gap-4 text-xs text-stone-400 sm:mt-10 sm:gap-6 sm:text-sm"
       >
         <div class="flex items-center gap-2">
           <svg class="h-5 w-5 text-green-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -127,7 +127,7 @@ const PHONE_HREF = CONTACT.phoneHref;
           { value: '5★', label: 'ocena klientów' },
         ].map((stat, i) => (
           <div class="text-center" data-animate style={`transition-delay: ${400 + i * 80}ms`}>
-            <div class="text-2xl font-bold text-wood-400 sm:text-3xl">{stat.value}</div>
+            <div class="text-xl font-bold text-wood-400 sm:text-3xl">{stat.value}</div>
             <div class="mt-0.5 text-xs text-stone-400 sm:text-sm">{stat.label}</div>
           </div>
         ))}
